@@ -5,7 +5,6 @@ astroid==2.3.3
 attrs==19.3.0
 backcall==0.1.0
 beautifulsoup4==4.8.2
-bleach==3.1.0
 bs4==0.0.1
 cachetools==3.1.1
 certifi==2019.11.28
@@ -75,7 +74,6 @@ pandas==0.25.3
 pandocfilters==1.4.2
 parso==0.5.1
 pickleshare==0.7.5
-Pillow==6.2.1
 ply==3.11
 post==2019.4.13
 prometheus-client==0.7.1
