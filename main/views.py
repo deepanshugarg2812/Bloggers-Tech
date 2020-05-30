@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from main import models
+from main import forms
 
 # Create your views here.
 def index(request):
@@ -16,3 +17,21 @@ def specificArticle(request,name):
         'models' : article
     }
     return render(request,'nameArticle.html',context = context)
+
+def addArticle(request):
+    error = None
+    articleForm = forms.ArticleForm()
+
+    if(request.method == "POST"):
+        article = forms.ArticleForm(request.POST)
+        print(article)
+        if(article.is_valid()):
+            return HttpResponse("Good")
+        else:
+            error = "Please fill the required details"
+
+    context = {
+        'forms' : articleForm,
+        'error' : error
+    }
+    return render(request,'addArticle.html',context = context)
