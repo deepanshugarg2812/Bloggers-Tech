@@ -11,21 +11,20 @@
 
 {% block body %}
 {% include 'Components/Navbar.html' %}
+<div class="container" style="margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
 
-<div class="container content">
-    <h3 class="text-center">Articles</h3>
-    <div class="row">
-        {% for model in models %}
-        <div class="card col-8 offset-2 col-md-10 offset-md-1 my-2">
-            <div class="card-body">
-            <h5 class="card-title">{{model.title}}</h5>
-            <p class="card-text">{{model.body}}</p>
-            <p>The article is written by-:<a href="author/article/{{model.author}}">{{model.author}}</a></p>
-            </div>
-        </div>
+    <form method="POST">
+        {% csrf_token %}
+        {% for fields in forms %}
+        <label for="{{fieds.name}}">{{fields.name}}</label>
+        <input class="form-control" id="{{fields.name}}" name="{{fields.name}}"><br>
         {% endfor %}
-    </div>
+        <button class="btn btn-secondary" type="submit">Login</button>
+    </form>
+    {% if error is not None %}
+    {{error}}
+    {% endif %}
+    <a href="/auth/register" style="color: wheat;">Don't have account</a>
 </div>
 
-{% include 'Components/Footer.html' %}
 {% endblock %}

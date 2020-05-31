@@ -9,12 +9,22 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'articles' %}">Articles</a>
         </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="/article">My Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'addArticle' %}">Add Article<span><i class="fa fa-lg fa-pencil-square" aria-hidden="true"></i></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/logout">Logout</a>
+          </li>
+        {% endif %}
+        {% if not user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="#">My Articles</a>
+          <a class="nav-link" href="/auth/login">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'addArticle' %}">Add Article<span><i class="fa fa-lg fa-pencil-square" aria-hidden="true"></i></span></a>
-        </li>
+        {% endif %}
       </ul>
     </div>
   </nav>

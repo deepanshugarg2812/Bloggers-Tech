@@ -25,6 +25,15 @@ footer{
     border-top: .05rem solid #e5e5e5;
 }
 
+#form{
+    background-color: black;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
 @media (max-width : 500px){
     .content{
         margin-top: 20px;
